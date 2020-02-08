@@ -5,7 +5,7 @@ $.ajaxSetup({
 function setHeaders() {
   let jwt = localStorage.getItem('authorization');
 
-  if(jwt) {
+  if (jwt) {
     return {
       authorization: jwt
     };
