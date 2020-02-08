@@ -7,6 +7,13 @@ const $message = $('#message');
 
 let authSetting = 'login';
 
+sendUserToBoards();
+
+function sendUserToBoards() {
+  if (localStorage.getItem('user')) {
+    location.replace('/boards');
+  }
+
 function setAuth(setting) {
   authSetting = setting;
   if (authSetting === 'login') {
@@ -57,6 +64,8 @@ function handleLoginResponse(data, status, jqXHR) {
 
     localStorage.setItem('authorization', jwt);
     localStorage.setItem('user', user);
+
+    sendUserToBoards();
   } else {
     displayMessage('invalid email or password', 'danger');
   }
